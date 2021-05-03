@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class AuthController extends Controller
 {
@@ -37,13 +39,25 @@ class AuthController extends Controller
     {
         //TODO
         if ($request->isMethod('post')) {
-            //validate request
-            //create user
-            // login user or send activate email
-            //redirected to dashboard/login
+            $this->validate(request(), [
+                'name' => 'required',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|confirmed|min:4'
+            ]);
+
+            $data = [
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'password' => Hash::make($request->get('password'))
+            ];
+
+            $user = User::create($data);
+            Auth::login($user);
+            event(new Registered($user));
+
+            return redirect('/dashboard');
         }
 
-        //return view register
-        return 'REGISTER';
+        return view('auth/registration');
     }
 }
