@@ -60,4 +60,13 @@ class AuthController extends Controller
 
         return view('auth/registration');
     }
+    public function forgotPassword(Request $request){
+        if($request->isMethod('post')){
+            $this->validate(request(),[
+                'email'=>'required|email'
+            ]);
+            return redirect('/login');
+        }
+        return view('auth/forgotPassword');
+    }
 }
