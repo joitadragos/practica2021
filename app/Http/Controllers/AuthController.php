@@ -55,7 +55,7 @@ class AuthController extends Controller
             Auth::login($user);
             event(new Registered($user));
 
-            return redirect('/dashboard');
+            return redirect('/login');
         }
 
         return view('auth/registration');
