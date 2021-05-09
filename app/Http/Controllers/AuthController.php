@@ -11,6 +11,8 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 
 class AuthController extends Controller
 {
+
+
     public function login(Request $request)
     {
         if ($request->isMethod('post')) {
