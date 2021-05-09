@@ -4,8 +4,13 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
+/**
+ * Class UserFactory
+ *
+ * @package Database\Factories
+ */
 class UserFactory extends Factory
 {
     /**
@@ -20,7 +25,7 @@ class UserFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'name' => $this->faker->name,
