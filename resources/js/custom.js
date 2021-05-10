@@ -8,4 +8,7 @@ $('#edit-modal').on('shown.bs.modal', function (event) {
     modal.find('#editId').val(user.id);
     modal.find('#editName').text(user.name);
     modal.find('#editRole').val(user.role);
-})
+
+});
+
+

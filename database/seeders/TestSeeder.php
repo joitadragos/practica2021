@@ -2,21 +2,16 @@
 
 namespace Database\Seeders;
 
-<<<<<<< HEAD
 use Illuminate\Database\Seeder;
 
-=======
 use App\Models\Board;
 use App\Models\Task;
 use App\Models\User;
-use Illuminate\Database\Seeder;
-
 /**
  * Class TestSeeder
  *
  * @package Database\Seeders
  */
->>>>>>> upstream/master
 class TestSeeder extends Seeder
 {
     /**

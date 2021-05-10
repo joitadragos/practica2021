@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use http\Env\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -22,5 +23,12 @@ class AdminController extends Controller
                 'users' => $users
             ]
         );
+    }
+    public function destroy($id){
+        User::find($id)->delete($id);
+
+        return response()->json([
+            'success'=>'User deleted successfully'
+        ]);
     }
 }
